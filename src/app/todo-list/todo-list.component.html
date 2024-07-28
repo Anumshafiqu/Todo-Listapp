@@ -1,0 +1,27 @@
+
+
+
+
+<!-- <div class="w-50 main">
+<h4 class="text-white text-center">{{todoList}}</h4>
+<input type="text" placeholder="Enter Todo" #task class="shadow-lg text-box ">
+<button (click)="AddTask(task.value)"  class="bg-gray-500 mx-2 text-white rounded-pill font-bold button-plus">+</button>
+<br><br>
+<ul *ngFor="let item of list">
+    <li>{{item.name}} &nbsp; &nbsp;<button (click)="removeItem(item.id)" class="bg-gray-500 mx-2 text-white p-2 font-bold  button-remove">Remove<i class="fa-solid fa-trash text-danger"></i></button></li>
+</ul>
+</div> -->
+
+<div class="card d-flex justify-content-center main">
+    <p-card class="card">
+            <h2 class=" text-center mt-0 text-yellow-400 ">{{todoList}}</h2>
+            <div class="d-flex">
+                <input type="text" placeholder="Enter Todo" #task class="bg-white card text-box">
+                <button (click)="AddTask(task.value)"  class=" mx-2 text-white px-4  rounded-pill font-bold button-plus">+</button>
+            </div>
+            <br>
+            <ul *ngFor="let item of list">
+                <li class="p-2 text-box m-0 p-0">{{item.name}} <button (click)="removeItem(item.id)" class=" mx-2 p-2 text-white rounded font-bold  button-remove">Remove</button></li>
+            </ul>
+        </p-card>
+    </div>
