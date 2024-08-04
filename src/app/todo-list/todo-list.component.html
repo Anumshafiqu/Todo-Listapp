@@ -12,7 +12,7 @@
 </ul>
 </div> -->
 
-<div class="card d-flex justify-content-center main">
+<!-- <div class="card d-flex justify-content-center main">
     <p-card class="card">
             <h2 class=" text-center mt-0 text-yellow-400 ">{{todoList}}</h2>
             <div class="d-flex">
@@ -21,7 +21,38 @@
             </div>
             <br>
             <ul *ngFor="let item of list">
+
                 <li class="p-2 text-box m-0 p-0">{{item.name}} <button (click)="removeItem(item.id)" class=" mx-2 p-2 text-white rounded font-bold  button-remove">Remove</button></li>
             </ul>
         </p-card>
-    </div>
+    </div> -->
+
+
+    <div class="card flex justify-content-center main">
+        <p-card class="card">
+                <h2 class=" text-center mt-0 text-yellow-400 ">{{todoList}}</h2>
+                <div class="d-flex">
+                    <input type="text" placeholder="Enter Todo" #task class="bg-white card text-box mt-2">
+                    <button (click)="AddTask(task.value)"  class=" mx-2 text-white px-4  rounded-pill font-bold button-plus">+</button>
+                </div>
+                <br>
+                <ul *ngFor="let item of list">
+    
+                    <!-- <li class="p-2 text-box m-0 p-0">{{item.name}} <button (click)="removeItem(item.id)" class=" mx-2 p-2 text-white rounded font-bold  button-remove">Remove</button></li> -->
+                    <div *ngFor="let todo of todos">
+                        <div *ngIf="!todo.editing">
+                          <span>{{ item.name }}</span>
+                    
+                          <button (click)="editTodo(todo)"   class=" mx-2 p-2 text-white rounded font-bold  button-remove">Edit</button>
+                        </div>
+                      
+                        <div *ngIf="todo.editing">
+                           <input [(ngModel)]="todo.title" class="py-2 px-2 border-secondary rounded-pill" /> 
+                          <button (click)="saveTodo(todo, todo.title)"  class=" mx-2 p-2 text-white rounded font-bold  button-remove">Save</button>
+                          <button (click)="cancelEdit(todo)"  class=" mx-2 p-2 text-white rounded font-bold  button-remove">Cancel</button>
+                          <button (click)="removeItem(item.id)" class=" mx-2 p-2 text-white rounded font-bold  button-remove">Remove</button>
+                        </div>
+                      </div>
+                </ul>
+            </p-card>
+        </div> 
