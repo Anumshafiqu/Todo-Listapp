@@ -28,7 +28,7 @@
     </div> -->
 
 
-    <div class="card flex justify-content-center main">
+      <!-- <div class="card flex justify-content-center main">
         <p-card class="card">
                 <h2 class=" text-center mt-0 text-yellow-400 ">{{todoList}}</h2>
                 <div class="d-flex">
@@ -36,23 +36,79 @@
                     <button (click)="AddTask(task.value)"  class=" mx-2 text-white px-4  rounded-pill font-bold button-plus">+</button>
                 </div>
                 <br>
-                <ul *ngFor="let item of list">
+                  <ul *ngFor="let item of list">  
     
-                    <!-- <li class="p-2 text-box m-0 p-0">{{item.name}} <button (click)="removeItem(item.id)" class=" mx-2 p-2 text-white rounded font-bold  button-remove">Remove</button></li> -->
-                    <div *ngFor="let todo of todos">
+                     <div *ngFor="let todo of todos">
                         <div *ngIf="!todo.editing">
-                          <span>{{ item.name }}</span>
+                           <span>{{ item.name}}</span> 
+                         
                     
                           <button (click)="editTodo(todo)"   class=" mx-2 p-2 text-white rounded font-bold  button-remove">Edit</button>
                         </div>
-                      
+                         
                         <div *ngIf="todo.editing">
-                           <input [(ngModel)]="todo.title" class="py-2 px-2 border-secondary rounded-pill" /> 
-                          <button (click)="saveTodo(todo, todo.title)"  class=" mx-2 p-2 text-white rounded font-bold  button-remove">Save</button>
+                            <input [(ngModel)]="todo.title" class="py-2 px-2 border-secondary rounded-pill" />
+                          <button (click)="saveTodo(todo)"  class=" mx-2 p-2 text-white rounded font-bold  button-remove">Save</button>
                           <button (click)="cancelEdit(todo)"  class=" mx-2 p-2 text-white rounded font-bold  button-remove">Cancel</button>
-                          <button (click)="removeItem(item.id)" class=" mx-2 p-2 text-white rounded font-bold  button-remove">Remove</button>
-                        </div>
+                            <button (click)="removeItem(item.id)" class=" mx-2 p-2 text-white rounded font-bold  button-remove">Remove</button>  -->
+                         <!-- </div>
                       </div>
-                </ul>
+                </ul>  
+
+            </p-card> 
+        </div>     -->
+
+
+         <!-- <div class="card flex justify-content-center main">  
+            <p-card class="card">
+              <h2 class="text-center mt-0 text-yellow-400">{{todoList}}</h2>
+              <div class="d-flex">
+                <input type="text" placeholder="Enter Todo" #task class="bg-white card text-box mt-2">
+                <button (click)="addTask(task.value)" class="mx-2 text-white px-4 rounded-pill font-bold button-plus">+</button>
+              </div>
+              <br>
+              <ul>
+                <li *ngFor="let todo of todos" class="d-flex flex-column">
+                  <div *ngIf="!todo.editing">
+                    <span>{{ todo.name }}</span>
+                    <button (click)="editTodo(todo)" class="mx-2 p-2 text-white rounded font-bold button-remove">Edit</button>
+                  </div>
+                  <div class="d-flex flex-row">
+                  <div *ngIf="todo.editing">
+                    <input [(ngModel)]="todo.name" class="py-2 px-2 border-secondary rounded-pill" />
+                    <button (click)="saveTodo(todo)" class="mx-2 p-2 text-white rounded font-bold button-remove">Save</button>
+                    <button (click)="cancelEdit(todo)" class="mx-2 p-2 text-white rounded font-bold button-remove">Cancel</button>
+                  </div>
+                  
+                  <button (click)="removeTodo(todo)" class="mx-2 text-white rounded font-bold button-remove mx-5">Remove</button>
+                </div>
+                </li>
+              </ul>
             </p-card>
-        </div> 
+          </div> -->
+          
+           <div class="card flex justify-content-center main">
+            <p-card class="card">
+              <h2 class="text-center mt-0 text-yellow-400">{{todoList}}</h2>
+              <div class="d-flex">
+                <input type="text" placeholder="Enter Todo" #task class="bg-white card text-box mt-2">
+                <button (click)="addTask(task.value)" class="mx-2 text-white px-4 rounded-pill font-bold button-plus">+</button>
+              </div>
+              <br>
+              <ul>
+                <li *ngFor="let todo of todos" class="todo-item">
+                  <div *ngIf="!todo.editing" class="todo-content">
+                    <span>{{ todo.name }}</span>
+                    <button (click)="editTodo(todo)" class=" p-2 text-white rounded font-bold button-action mx-2 text-white rounded font-bold button-remove">Edit</button>
+                  </div>
+                  <div *ngIf="todo.editing" class="todo-content">
+                    <input [(ngModel)]="todo.name" class="py-2 px-2 border-secondary rounded-pill" />
+                    <button (click)="saveTodo(todo)" class="mx-2 p-2 text-white rounded font-bold button-action mx-2 text-white rounded font-bold button-remove">Save</button>
+                    <button (click)="cancelEdit(todo)" class="mx-2 p-2 text-white rounded font-bold button-action mx-2 text-white rounded font-bold button-remove">Cancel</button>
+                  </div>
+                  <button (click)="removeTodo(todo)" class=" p-2 text-white rounded font-bold button-action mx-2 text-white rounded font-bold button-remove">Remove</button>
+                </li>
+              </ul>
+            </p-card>
+          </div> 
+          

@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { Todo } from '../model/Todo';
+// import { Todo } from '../model/Todo';
+interface Todo {
+  id: number;
+  name: string;
+  editing: boolean;
+}
 
 @Component({
   selector: 'app-todo-list',
@@ -7,39 +12,82 @@ import { Todo } from '../model/Todo';
   styleUrl: './todo-list.component.css'
 })
 export class TodoListComponent {
-  todoList:any= 'Todo List App';
-  list:any[] = [];
-  AddTask(item:string){
-    this.list.push({id:this.list.length , name:item});
-    console.warn(this.list);
+  // item:any;
+  // todoList:any= 'Todo List App';
+  // list:any[] = [];
+  // AddTask(item:string){
+  //   this.list.push({id:this.list.length , name:item});
+  //   console.warn(this.list);
 
-  }
-  removeItem(id:number){
-    console.warn(id);
-    this.list = this.list.filter(item=>item.id!==id);
+  // }
+  // removeItem(id:number){
+  //   console.warn(id);
+  //   this.list = this.list.filter(item=>item.id!==id);
 
-  }
+  // }
 
 
-  todos: Todo[] = [
-    { id: 1, title: 'Todo', completed: false },
-    // { id: 2, title: 'Todo List app', completed: false }
-  ];
+  // todos: Todo[] = [
+  //   { id: 1, title: 'Todo', completed: false },
+  //   // { id: 2, title: 'Build a to-do app', completed: false }
+  // ];
+
+  // constructor() { }
+
+  // ngOnInit(): void { }
+
+  // editTodo(todo: Todo): void {
+  //   this.todos.forEach(t => t.editing = false); // Set editing to false for all items
+  //   todo.editing = true; // Set editing to true for the selected item
+  // }
+
+  // saveTodo(todo: Todo): void {
+  //   todo.editing = false; // Reset the editing state
+  // }
+
+  // cancelEdit(todo: Todo): void {
+  //   todo.editing = false; // Reset the editing state
+  // }
+
+  // addTodo(title: string): void {
+  //   if (title) {
+  //     this.todos.push({ id: this.todos.length + 1, title: title, completed: false });
+  //   }
+  // }
+
+  // removeTodo(todo: Todo): void {
+  //   this.todos = this.todos.filter(t => t !== todo);
+  // }
+
+
+
+  todos: Todo[] = [];
+  todoList = "Todo List App";
 
   constructor() { }
 
   ngOnInit(): void { }
 
-  editTodo(todo: Todo): void {
-    todo.editing = true;
+  addTask(name: string): void {
+    if (name) {
+      this.todos.push({ id: this.todos.length + 1, name: name, editing: false });
+    }
   }
 
-  saveTodo(todo: Todo, newTitle: string): void {
-    todo.title = newTitle;
-    todo.editing = false;
+  editTodo(todo: Todo): void {
+    this.todos.forEach(t => t.editing = false); // Set editing to false for all items
+    todo.editing = true; // Set editing to true for the selected item
+  }
+
+  saveTodo(todo: Todo): void {
+    todo.editing = false; // Reset the editing state
   }
 
   cancelEdit(todo: Todo): void {
-    todo.editing = false;
+    todo.editing = false; // Reset the editing state
+  }
+
+  removeTodo(todo: Todo): void {
+    this.todos = this.todos.filter(t => t.id !== todo.id);
   }
 }

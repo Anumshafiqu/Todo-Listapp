@@ -22,11 +22,33 @@
     cursor: pointer;
     border: none !important;
     background-color: rgb(192, 147, 33);
+    width: 100px;
 }
 li{
     list-style: none !important;
     width: 300px;
 }
 .main{
-width: 650px;
+width: 100%;
 }
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+  }
+  
+  .todo-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .todo-content input {
+    margin-right: 10px;
+  }
+  
+  /* .button-action {
+    margin-left: 5px;
+  } */
+  
